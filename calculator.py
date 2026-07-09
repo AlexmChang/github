@@ -3,6 +3,6 @@ def main():
     print("x squared is", square(x))
 
 def square(n):
-    return int(n*n)
+    return pow(n,2)
 
 main()
