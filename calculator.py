@@ -1,6 +1,6 @@
 x = float(input("What's the value of x?"))
 y = float(input("What's the value of y?"))
 
-z = round(x / y , 2)
+z = x / y
 
-print(z)
+print(f"{z:.2f}")
