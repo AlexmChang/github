@@ -11,7 +11,8 @@ def prompt(a, b):
     print("multiple-choice question.")
     print("              Rules:               ")
     print("     1. Ask ONE question. for difficulty", end=" ")
-    print(a)      
+    print(a, end="")
+    print("/10")      
     print("     2. Wait for my answer.")  
     print("     3. Grade my answer.")
     print("     4. Explain the answer.")
@@ -25,7 +26,7 @@ def instruct():
 
 def upddiff():
     yn = False
-    yn = input("Did you answer correctly? (true/false): ")
+    yn = input("Did you answer correctly? (True/False): ")
     return yn
 
 def main():
@@ -34,17 +35,22 @@ def main():
     prompt(lvl, subject)
 
     while lvl < 10:
+        prompt()
         instruct()
         yn = upddiff()
-        if yn:
+        if yn == True:
             lvl+=1
             print("Good job! Now the level will be ranked up to", lvl)
+        else:
+            print("Try again! The level will remain at", lvl)
+            
     
 
     cont = input("Do you want to practice another subject of ACT? True/False ")
     
     if cont:
         main()
+        cont = False
     else:
         print("Thank you for using the AI ACT assistant bot")
 
