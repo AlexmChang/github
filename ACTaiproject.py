@@ -1,7 +1,15 @@
 def diagnostic():
     print("Welcome to the AI bot that will assist you with your ACT testing. After using this AI your ACT scores will start to go up")
     subject = input(f"Which ACT subject do you need help with? We offer science, math, reading, and english. The subject you need help is? ").strip()
-    lvl = input(f"Rank the level of difficulty of problem you want from ACT {subject} on a scale of 1-10 ")
+    while True:
+        try:
+            lvl = int(input(f"Rank the level of difficulty of problem you want from ACT {subject} on a scale of 1-10 "))
+            if(lvl<1 or lvl >10):
+                print("That is not a valid number! Please try again.")  
+            else:
+                break  
+        except ValueError:
+            print("That is not a valid number! Please try again.")  
     return lvl, subject
 
 def prompt(a, b):
@@ -25,33 +33,32 @@ def instruct():
     input("Press Enter to continue...")
 
 def upddiff():
-    yn = False
-    yn = input("Did you answer correctly? (True/False): ")
+    yn = input("Did you answer correctly? (True/False): ").title() == "True"
     return yn
+
+def newsubject():
+    cont = input("Do you want to practice another subject of ACT? (True/False) ").title() == "True"
+    return cont
 
 def main():
     lvl, subject = diagnostic()
     lvl = int(lvl)
-    prompt(lvl, subject)
 
     while lvl < 10:
-        prompt()
+        prompt(lvl, subject)
         instruct()
         yn = upddiff()
-        if yn == True:
+        if yn:
             lvl+=1
             print("Good job! Now the level will be ranked up to", lvl)
         else:
             print("Try again! The level will remain at", lvl)
-            
-    
 
-    cont = input("Do you want to practice another subject of ACT? True/False ")
+    cont = newsubject()
     
     if cont:
         main()
-        cont = False
     else:
-        print("Thank you for using the AI ACT assistant bot")
+        print("Thank you for using the AI ACT assistant bot.")
 
 main()
