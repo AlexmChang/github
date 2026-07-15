@@ -1,6 +1,15 @@
 def diagnostic():
     print("Welcome to the AI bot that will assist you with your ACT testing. After using this AI your ACT scores will start to go up")
+    subjectlist = ["math", "reading", "english", "science"]
     subject = input(f"Which ACT subject do you need help with? We offer science, math, reading, and english. The subject you need help is? ").strip()
+    for i in subjectlist:
+        if(subject == i):
+            found = True
+            break
+
+    if not found:
+        print("That is not a valid subject! The only available subjects are math, reading, english, and science. Please try again. ")
+    
     while True:
         try:
             lvl = int(input(f"Rank the level of difficulty of problem you want from ACT {subject} on a scale of 1-10 "))
