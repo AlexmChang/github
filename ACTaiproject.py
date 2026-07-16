@@ -13,20 +13,23 @@ def diagnostic():
             print("That is not a valid number! Please try again.")  
     return lvl, subjectfe
 
-def subjectff():
+def whichsubject():
     subjectlist = ["math", "reading", "english", "science"]
     subjects = input(f"Which ACT subject do you need help with? We offer science, math, reading, and english. The subject you need help is? ").strip()  
 
-
-    for i in subjectlist:
-        if(subjects == i):
-            found = True
-            break
-
-    if not found:
-        print("That is not a valid subject! The only available subjects are math, reading, english, and science. Please try again. ")
-
     return subjects
+
+
+def subjectff():
+    subject = whichsubject()
+    subjectlist = ["math", "reading", "english", "science"]
+
+    while True:
+        if(subject.casefold() in subjectlist):
+            return subject
+        else:
+            print("That is not a valid subject! The only available subjects are math, reading, english, and science. Please try again. ")
+            subject = whichsubject()
 
 def prompt(a, b):
     print("---------- START OF PROMPT ----------")
