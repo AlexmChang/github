@@ -3,19 +3,20 @@ def diagnostic():
     subjectfe = subjectff()
 
     while True:
-        try:
-            lvl = int(input(f"Rank the level of difficulty of problem you want from ACT {subjectfe} on a scale of 1-10 "))
-            if(lvl<1 or lvl >10):
-                print("That is not a valid number! Please try again.")  
-            else:
-                break  
-        except ValueError:
-            print("That is not a valid number! Please try again.")  
+            lvl = input(f"Rank the level of difficulty of problem you want from ACT {subjectfe} on a scale of 1-10 ")
+            
+            if lvl.isdigit():
+                lvl = int(lvl)
+                if 1 <= lvl <=10:
+                    break
+    
+            print("That is not a valid number! Please try again.") 
+
     return lvl, subjectfe
 
 def whichsubject():
     subjectlist = ["math", "reading", "english", "science"]
-    subjects = input(f"Which ACT subject do you need help with? We offer science, math, reading, and english. The subject you need help is? ").strip()  
+    subjects = input(f"Which ACT subject do  you need help with? We offer science, math, reading, and english. The subject you need help is? ").strip()  
 
     return subjects
 
@@ -73,6 +74,7 @@ def main():
         else:
             print("Try again! The level will remain at", lvl)
 
+    print("Congratulations on completing lvl 10!")
     cont = newsubject()
     
     if cont:
