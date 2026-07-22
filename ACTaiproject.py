@@ -53,11 +53,19 @@ def instruct():
     input("Press Enter to continue...")
 
 def upddiff():
-    yn = input("Did you answer correctly? (True/False): ").title() == "True"
+    yn = input("Did you answer correctly? ").title()
+    if yn in ["Y", "Yes", "True"]:
+        yn = True
+    elif yn in ["N","No", "False"]:
+        yn = False
     return yn
 
 def newsubject():
-    cont = input("Do you want to practice another subject of ACT? (True/False) ").title() == "True"
+    cont = input("Do you want to practice another subject of ACT? ").title()
+    if cont in ["Y", "Yes", "True"]:
+        cont = True
+    elif cont in ["N","No", "False"]:
+        cont = False
     return cont
 
 def main():
